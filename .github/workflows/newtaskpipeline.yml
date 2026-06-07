@@ -1,49 +1,24 @@
-name: Demo Workflow
+name: new task pipeline
 env:
     USERNAME: "rahul"
     EMPLOYEE_ID: 12345
-
 on: 
     workflow_dispatch:
-        inputs:
-            # employeename:
-            #         description: 'Enter the employeename'
-            #         required: true
-            #         default: 'Sandeep'
-            employee_id:
-                    description: 'Enter the employee id'
-                    required: true
-                    default: 12345
-            employee_count:
-                    description: 'Enter the employee count'
-                    required: true
-                    default: 10
-
-
+        
     push:
         branches: [ main ]
 
 jobs:
-    Greet:
+    Build:
     
         runs-on: ubuntu-latest
         steps: 
         - name: Greet the world
           run: echo "hellow world"
 
-        - name: Read username and employee id from env
-          run: |
-            echo "Hello ${{ env.USERNAME }}"
-            echo "Hello ${{ env.EMPLOYEE_ID }}"
-
-        - name: Read inputs of employee id only if trigger is workflow dispatched manually
-          if: github.event_name == 'workflow_dispatch'
-          run: echo "Hello ${{ github.event.inputs.employee_id }}"
-
-        - name: Read inputs of employee count only if trigger is workflow dispatched manually
-          if: github.run_number == 'workflow_dispatch'
-          run: echo "Hello ${{ github.event.inputs.employee_count }}"
-
-        - name: Read inputs of employee id only if trigger is workflow dispatched manually
-        #   if: github.run_id == 'workflow_dispatch'
-          run: echo "Hello ${{ github.event.inputs.employee_id }}"  
+    Deploy:
+        needs: Build
+        runs-on: ubuntu-latest
+        steps: 
+        - name: Greet the world
+          run: echo "hellow world"
