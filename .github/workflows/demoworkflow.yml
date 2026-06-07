@@ -9,7 +9,9 @@ on:
             Username:
                     description: 'Enter the username'
                     required: true
-                    default: 'Mani'
+                    default: 'Sandeep'
+    push:
+        branches: [ main ]
 
 jobs:
     Greet:
