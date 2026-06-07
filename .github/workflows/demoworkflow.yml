@@ -1,15 +1,19 @@
 name: Demo Workflow
 env:
-    Username: "rahul"
-    employee id: 12345
+    USERNAME: "rahul"
+    EMPLOYEE_ID: 12345
 
 on: 
     workflow_dispatch:
         inputs:
-            Username:
-                    description: 'Enter the username'
+            # employeename:
+            #         description: 'Enter the employeename'
+            #         required: true
+            #         default: 'Sandeep'
+            employee_id:
+                    description: 'Enter the employee id'
                     required: true
-                    default: 'Sandeep'
+                    default: 12345
     push:
         branches: [ main ]
 
@@ -21,6 +25,10 @@ jobs:
         - name: Greet the world
           run: echo "hellow world"
 
-        - name: greet the Username
-          run: echo "Hello ${{ env.Username }}"
-          
+        - name: Read username and employee id from env
+          run: |
+            echo "Hello ${{ env.USERNAME }}"
+            echo "Hello ${{ env.EMPLOYEE_ID }}"
+
+        - name: Read inputs of employee id
+          run: echo "Hello ${{ github.event.inputs.employee_id }}"
