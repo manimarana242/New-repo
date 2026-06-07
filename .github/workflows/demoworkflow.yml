@@ -1,6 +1,6 @@
 name: Demo Workflow
 env:
-    Username: "Mani"
+    Username: "rahul"
     employee id: 12345
 
 on: 
@@ -22,5 +22,5 @@ jobs:
           run: echo "hellow world"
 
         - name: greet the Username
-          run: echo "Hello ${{ github.event.inputs.Username }}"
+          run: echo "Hello ${{ env.Username }}"
           
