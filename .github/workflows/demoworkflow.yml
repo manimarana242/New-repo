@@ -20,5 +20,5 @@ jobs:
           run: echo "hellow world"
 
         - name: greet the Username
-          run: echo "hello, ${{ env.Username }}"
+          run: echo "Hello ${{ github.event.inputs.Username }}"
           
