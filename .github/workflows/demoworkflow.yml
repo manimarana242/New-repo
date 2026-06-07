@@ -14,6 +14,12 @@ on:
                     description: 'Enter the employee id'
                     required: true
                     default: 12345
+            employee_count:
+                    description: 'Enter the employee count'
+                    required: true
+                    default: 10
+                    
+
     push:
         branches: [ main ]
 
@@ -30,6 +36,14 @@ jobs:
             echo "Hello ${{ env.USERNAME }}"
             echo "Hello ${{ env.EMPLOYEE_ID }}"
 
-        - name: Read inputs of employee id
+        - name: Read inputs of employee id only if trigger is workflow dispatched manually
           if: github.event_name == 'workflow_dispatch'
           run: echo "Hello ${{ github.event.inputs.employee_id }}"
+
+        - name: Read inputs of employee count only if trigger is workflow dispatched manually
+          if: github.run_number == 'workflow_dispatch'
+          run: echo "Hello ${{ github.event.inputs.employee_count }}"
+
+        - name: Read inputs of employee id only if trigger is workflow dispatched manually
+          if: github.run_id == 'workflow_dispatch'
+          run: echo "Hello ${{ github.event.inputs.employee_id }}"  
