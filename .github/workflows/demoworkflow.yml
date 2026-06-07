@@ -4,14 +4,16 @@ env:
     employee id: 12345
 
 on: 
-    Workflow dispatch
-jobs:
-        Greet:
-        runs-on: ubuntu-latest
-    steps: 
-            name: Greet the world
-            run: echo "hellow world"
+  workflow_dispatch
 
-            name: greet the Username
-            run: echo "hello, ${{ env.Username }}"
+jobs:
+    Greet:
+    
+        runs-on: ubuntu-latest
+        steps: 
+        - name: Greet the world
+          run: echo "hellow world"
+
+        - name: greet the Username
+          run: echo "hello, ${{ env.Username }}"
           
