@@ -4,7 +4,12 @@ env:
     employee id: 12345
 
 on: 
-  workflow_dispatch
+    workflow_dispatch:
+        inputs:
+            Username:
+                    description: 'Enter the username'
+                    required: true
+                    default: 'Mani'
 
 jobs:
     Greet:
