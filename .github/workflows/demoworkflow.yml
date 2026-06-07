@@ -41,9 +41,7 @@ jobs:
           run: echo "Hello ${{ github.event.inputs.employee_id }}"
 
         - name: Read inputs of employee count only if trigger is workflow dispatched manually
-          if: github.run_number == 'workflow_dispatch'
-          run: echo "Hello ${{ github.event.inputs.employee_count }}"
+          run: echo "github number - ${{ github.run_number }}"
 
         - name: Read inputs of employee id only if trigger is workflow dispatched manually
-        #   if: github.run_id == 'workflow_dispatch'
-          run: echo "Hello ${{ github.event.inputs.employee_id }}"  
+          run: echo "github run id - ${{ github.run_id }}"
