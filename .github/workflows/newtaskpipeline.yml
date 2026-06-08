@@ -18,6 +18,7 @@ jobs:
 
     Deploy:
         needs: Build
+        environment: Approvals
         runs-on: ubuntu-latest
         steps: 
         - name: Greet the world
